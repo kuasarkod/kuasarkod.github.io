@@ -13,20 +13,34 @@
         }
         
         :root {
-            --primary: #8b5cf6;
-            --secondary: #6366f1;
-            --dark: #0f0f23;
-            --darker: #0a0a15;
-            --cyan: #22d3ee;
-            --pink: #ec4899;
-            --text-gray: #94a3b8;
+            /* Ocean Breeze Color Palette */
+            --ocean-bright: #00D4FF;
+            --ocean-blue: #00A8CC;
+            --sky-blue: #7DD3FC;
+            --light-blue: #B8E6F5;
+            --ice-blue: #E0F7FA;
+            --ocean-dark: #0A1A2E;
+            --ocean-darker: #05101F;
+            --ocean-deep: #0D2338;
+            --text-light: #E0F7FA;
+            --text-gray: #B8E6F5;
+            --text-muted: #7DD3FC;
+            
+            /* Legacy support */
+            --primary: #00D4FF;
+            --secondary: #00A8CC;
+            --dark: #0A1A2E;
+            --darker: #05101F;
+            --cyan: #00D4FF;
+            --pink: #7DD3FC;
         }
         
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'SF Pro Display', Roboto, sans-serif;
             line-height: 1.6;
-            color: white;
-            background: var(--dark);
+            color: var(--text-light);
+            background: linear-gradient(135deg, var(--ocean-dark) 0%, var(--ocean-deep) 50%, var(--ocean-darker) 100%);
+            background-attachment: fixed;
             overflow-x: hidden;
         }
         
@@ -36,8 +50,10 @@
             width: 100%;
             padding: 25px 0;
             z-index: 100;
-            background: rgba(15, 15, 35, 0.8);
-            backdrop-filter: blur(10px);
+            background: linear-gradient(135deg, rgba(10, 26, 46, 0.95) 0%, rgba(5, 16, 31, 0.95) 100%);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+            box-shadow: 0 4px 30px rgba(0, 212, 255, 0.1);
         }
         
         .nav-container {
@@ -52,7 +68,10 @@
         .logo {
             font-size: 1.2em;
             font-weight: 700;
-            color: white;
+            background: linear-gradient(135deg, var(--ocean-bright) 0%, var(--sky-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
         .nav-links {
@@ -66,12 +85,29 @@
             color: var(--text-gray);
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s;
+            transition: all 0.3s;
             font-size: 0.95em;
+            position: relative;
+            padding: 5px 0;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--ocean-bright) 0%, var(--sky-blue) 100%);
+            transition: width 0.3s;
         }
         
         .nav-links a:hover {
-            color: white;
+            color: var(--ocean-bright);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
         }
         
         .theme-toggle {
@@ -107,38 +143,42 @@
         .shape-1 {
             width: 200px;
             height: 200px;
-            border: 3px solid var(--primary);
+            border: 3px solid var(--ocean-bright);
             top: 0;
             right: 0;
             animation: float 6s ease-in-out infinite;
+            box-shadow: 0 0 30px rgba(0, 212, 255, 0.3);
         }
         
         .shape-2 {
             width: 100px;
             height: 100px;
-            background: var(--cyan);
+            background: var(--sky-blue);
             top: 30%;
             right: 20%;
             animation: float 4s ease-in-out infinite reverse;
+            box-shadow: 0 0 20px rgba(125, 211, 252, 0.4);
         }
         
         .shape-3 {
             width: 80px;
             height: 80px;
-            background: var(--pink);
+            background: var(--ocean-blue);
             bottom: 20%;
             right: 40%;
             animation: float 5s ease-in-out infinite;
+            box-shadow: 0 0 20px rgba(0, 168, 204, 0.4);
         }
         
         .shape-4 {
             width: 150px;
             height: 150px;
-            border: 3px solid var(--pink);
+            border: 3px solid var(--light-blue);
             border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
             bottom: 0;
             right: 10%;
             animation: morph 8s ease-in-out infinite;
+            box-shadow: 0 0 25px rgba(184, 230, 245, 0.3);
         }
         
         @keyframes float {
@@ -153,15 +193,16 @@
         
         .badge {
             display: inline-block;
-            background: rgba(139, 92, 246, 0.15);
-            color: var(--primary);
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.15) 0%, rgba(0, 168, 204, 0.15) 100%);
+            color: var(--ocean-bright);
             padding: 8px 20px;
             border-radius: 20px;
             font-size: 0.85em;
             font-weight: 600;
             letter-spacing: 0.5px;
             margin-bottom: 25px;
-            border: 1px solid rgba(139, 92, 246, 0.3);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            backdrop-filter: blur(10px);
         }
         
         .hero-content h1 {
@@ -191,21 +232,31 @@
             max-width: 580px;
         }
         
+        .hero-content ul {
+            color: var(--text-gray);
+        }
+        
+        .hero-content ul li {
+            color: var(--text-gray);
+        }
+        
         .cta-button {
             display: inline-block;
-            background: white;
-            color: var(--dark);
+            background: linear-gradient(135deg, var(--ocean-bright) 0%, var(--ocean-blue) 100%);
+            color: white;
             padding: 16px 36px;
-            border-radius: 8px;
+            border-radius: 12px;
             text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
+            font-weight: 700;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 20px rgba(0, 212, 255, 0.3);
+            border: 1px solid rgba(0, 212, 255, 0.3);
         }
         
         .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 35px rgba(0, 212, 255, 0.5);
+            background: linear-gradient(135deg, var(--ocean-blue) 0%, var(--ocean-bright) 100%);
         }
         
         .section {
@@ -221,20 +272,25 @@
         
         .section-badge {
             display: inline-block;
-            background: rgba(139, 92, 246, 0.15);
-            color: var(--primary);
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.15) 0%, rgba(0, 168, 204, 0.15) 100%);
+            color: var(--ocean-bright);
             padding: 8px 20px;
             border-radius: 20px;
             font-size: 0.85em;
             font-weight: 600;
             margin-bottom: 20px;
-            border: 1px solid rgba(139, 92, 246, 0.3);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            backdrop-filter: blur(10px);
         }
         
         .section-title {
             font-size: 3em;
             font-weight: 800;
             margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--ocean-bright) 0%, var(--sky-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
         .section-subtitle {
@@ -242,6 +298,7 @@
             font-size: 1.2em;
             max-width: 600px;
             margin: 0 auto;
+            line-height: 1.8;
         }
         
         .services-grid {
@@ -252,17 +309,20 @@
         }
         
         .service-card {
-            background: rgba(255, 255, 255, 0.03);
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.08) 0%, rgba(0, 168, 204, 0.08) 100%);
             padding: 40px;
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
+            border-radius: 20px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 212, 255, 0.1);
         }
         
         .service-card:hover {
-            background: rgba(255, 255, 255, 0.05);
-            transform: translateY(-5px);
-            border-color: rgba(139, 92, 246, 0.3);
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.15) 0%, rgba(0, 168, 204, 0.15) 100%);
+            transform: translateY(-8px);
+            border-color: rgba(0, 212, 255, 0.4);
+            box-shadow: 0 12px 40px rgba(0, 212, 255, 0.2);
         }
         
         .service-icon {
@@ -299,13 +359,24 @@
             align-items: center;
             gap: 40px;
             flex-wrap: wrap;
-            opacity: 0.6;
         }
         
         .tech-logos span {
             font-size: 1.1em;
             color: var(--text-gray);
             font-weight: 500;
+            padding: 8px 16px;
+            background: rgba(0, 212, 255, 0.08);
+            border-radius: 20px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            transition: all 0.3s;
+        }
+        
+        .tech-logos span:hover {
+            background: rgba(0, 212, 255, 0.15);
+            border-color: rgba(0, 212, 255, 0.4);
+            color: var(--ocean-bright);
+            transform: translateY(-2px);
         }
         
         .projects-grid {
@@ -315,23 +386,26 @@
         }
         
         .project-card {
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 16px;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.08) 0%, rgba(0, 168, 204, 0.08) 100%);
+            border-radius: 20px;
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             cursor: pointer;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 212, 255, 0.1);
         }
         
         .project-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(139, 92, 246, 0.3);
+            transform: translateY(-10px);
+            border-color: rgba(0, 212, 255, 0.5);
+            box-shadow: 0 16px 50px rgba(0, 212, 255, 0.3);
         }
         
         .project-image {
             width: 100%;
             height: 240px;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            background: linear-gradient(135deg, var(--ocean-bright) 0%, var(--ocean-blue) 50%, var(--sky-blue) 100%);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -374,10 +448,11 @@
         }
         
         footer {
-            background: var(--darker);
+            background: linear-gradient(135deg, var(--ocean-darker) 0%, var(--ocean-dark) 100%);
             padding: 40px;
             text-align: center;
             margin-top: 120px;
+            border-top: 1px solid rgba(0, 212, 255, 0.2);
         }
         
         .footer-content {
@@ -405,11 +480,27 @@
             color: var(--text-gray);
             text-decoration: none;
             font-size: 0.9em;
-            transition: color 0.3s;
+            transition: all 0.3s;
+            position: relative;
         }
         
         .footer-links a:hover {
-            color: white;
+            color: var(--ocean-bright);
+        }
+        
+        .footer-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--ocean-bright);
+            transition: width 0.3s;
+        }
+        
+        .footer-links a:hover::after {
+            width: 100%;
         }
         
         .social-links {
@@ -420,19 +511,24 @@
         .social-link {
             width: 40px;
             height: 40px;
-            border-radius: 8px;
-            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.2);
             display: flex;
             align-items: center;
             justify-content: center;
             text-decoration: none;
             color: var(--text-gray);
             transition: all 0.3s;
+            backdrop-filter: blur(10px);
         }
         
         .social-link:hover {
-            background: rgba(139, 92, 246, 0.2);
-            color: white;
+            background: rgba(0, 212, 255, 0.2);
+            border-color: var(--ocean-bright);
+            color: var(--ocean-bright);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.3);
         }
         
         /* Modal Styles - Ocean Breeze Theme */
@@ -799,7 +895,7 @@
 
         <div class="projects-grid">
             <div class="project-card" data-repo="kasa-simulasyon" data-owner="kuasarkod">
-                <div class="project-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%)">
+                <div class="project-image" style="background: linear-gradient(135deg, #00D4FF 0%, #00A8CC 50%, #7DD3FC 100%)">
                     <span>💰</span>
                     <div class="project-tag">LARAVEL</div>
                 </div>
@@ -810,7 +906,7 @@
             </div>
 
             <div class="project-card" data-repo="network-anomaly-detector" data-owner="kuasarkod">
-                <div class="project-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)">
+                <div class="project-image" style="background: linear-gradient(135deg, #00A8CC 0%, #00D4FF 50%, #B8E6F5 100%)">
                     <span>🔍</span>
                     <div class="project-tag">FASTAPI & REACT</div>
                 </div>
@@ -821,7 +917,7 @@
             </div>
 
             <div class="project-card" data-repo="ruby-restaurant" data-owner="kuasarkod">
-                <div class="project-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%)">
+                <div class="project-image" style="background: linear-gradient(135deg, #7DD3FC 0%, #00D4FF 50%, #00A8CC 100%)">
                     <span>🍽️</span>
                     <div class="project-tag">RUBY</div>
                 </div>
@@ -832,7 +928,7 @@
             </div>
 
             <div class="project-card" data-repo="tasarrufcu-app" data-owner="kuasarkod">
-                <div class="project-image" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)">
+                <div class="project-image" style="background: linear-gradient(135deg, #00D4FF 0%, #7DD3FC 50%, #B8E6F5 100%)">
                     <span>💡</span>
                     <div class="project-tag">AI & MOBILE</div>
                 </div>
@@ -843,7 +939,7 @@
             </div>
 
             <div class="project-card" data-repo="coin-spy" data-owner="kuasarkod">
-                <div class="project-image" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%)">
+                <div class="project-image" style="background: linear-gradient(135deg, #00A8CC 0%, #00D4FF 50%, #7DD3FC 100%)">
                     <span>₿</span>
                     <div class="project-tag">CLI TOOL</div>
                 </div>
@@ -854,7 +950,7 @@
             </div>
 
             <div class="project-card" data-repo="advanced-port-scanner" data-owner="kuasarkod">
-                <div class="project-image" style="background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%)">
+                <div class="project-image" style="background: linear-gradient(135deg, #0A1A2E 0%, #00A8CC 50%, #00D4FF 100%)">
                     <span>🔒</span>
                     <div class="project-tag">SECURITY</div>
                 </div>
@@ -876,12 +972,12 @@
             <div class="service-card">
                 <div class="service-icon">💬</div>
                 <h3>Telegram</h3>
-                <p><a href="https://t.me/kuasarkod" style="color: var(--cyan); text-decoration: none;">@kuasarkod</a></p>
+                <p><a href="https://t.me/kuasarkod" style="color: var(--ocean-bright); text-decoration: none; font-weight: 600; transition: all 0.3s;" onmouseover="this.style.color='var(--sky-blue)'" onmouseout="this.style.color='var(--ocean-bright)'">@kuasarkod</a></p>
             </div>
             <div class="service-card">
                 <div class="service-icon">📱</div>
                 <h3>WhatsApp</h3>
-                <p><a href="https://wa.me/905318565797" style="color: var(--cyan); text-decoration: none;">+90 531 856 5797</a></p>
+                <p><a href="https://wa.me/905318565797" style="color: var(--ocean-bright); text-decoration: none; font-weight: 600; transition: all 0.3s;" onmouseover="this.style.color='var(--sky-blue)'" onmouseout="this.style.color='var(--ocean-bright)'">+90 531 856 5797</a></p>
             </div>
             <div class="service-card">
                 <div class="service-icon">🧩</div>
@@ -950,9 +1046,23 @@
 
         async function openModal(owner, repo) {
             // Format repo name for display (handle Turkish characters properly)
-            const formattedRepoName = repo.split('-').map(word => 
+            // Decode any URL-encoded characters first
+            let decodedRepo = decodeURIComponent(repo);
+            
+            // Map common repo names to proper Turkish display names
+            const repoNameMap = {
+                'kasa-simulasyon': 'Kasa Simülasyon',
+                'network-anomaly-detector': 'Network Anomaly Detector',
+                'ruby-restaurant': 'Ruby Restaurant',
+                'tasarrufcu-app': 'Tasarrufçu',
+                'coin-spy': 'Coin Spy',
+                'advanced-port-scanner': 'Advanced Port Scanner'
+            };
+            
+            const formattedRepoName = repoNameMap[repo] || decodedRepo.split('-').map(word => 
                 word.charAt(0).toUpperCase() + word.slice(1)
             ).join(' ');
+            
             modalTitle.textContent = formattedRepoName;
             modalContent.innerHTML = '<div class="loading">Yükleniyor...</div>';
             modal.classList.add('active');
@@ -964,7 +1074,11 @@
                 const repoData = await repoResponse.json();
                 
                 const repoUrl = repoData.html_url;
-                const description = repoData.description || 'Açıklama bulunamadı.';
+                // Properly handle Turkish characters in description
+                let description = repoData.description || 'Açıklama bulunamadı.';
+                // Fix common encoding issues
+                description = description.replace(/Ã¼/g, 'ü').replace(/Ã§/g, 'ç').replace(/Ä±/g, 'ı').replace(/Å/g, 'ş').replace(/ÄŸ/g, 'ğ').replace(/Ã¶/g, 'ö');
+                description = description.replace(/Ã/g, 'ı').replace(/¼/g, 'ü').replace(/§/g, 'ç');
                 const language = repoData.language || 'N/A';
                 const stars = repoData.stargazers_count || 0;
                 const forks = repoData.forks_count || 0;
@@ -996,8 +1110,17 @@
                     console.log('README not found or error:', readmeError);
                 }
 
-                // Format repo name for display
-                const formattedRepoName = repo.split('-').map(word => 
+                // Format repo name for display (handle Turkish characters properly)
+                const repoNameMap = {
+                    'kasa-simulasyon': 'Kasa Simülasyon',
+                    'network-anomaly-detector': 'Network Anomaly Detector',
+                    'ruby-restaurant': 'Ruby Restaurant',
+                    'tasarrufcu-app': 'Tasarrufçu',
+                    'coin-spy': 'Coin Spy',
+                    'advanced-port-scanner': 'Advanced Port Scanner'
+                };
+                
+                const formattedRepoName = repoNameMap[repo] || repo.split('-').map(word => 
                     word.charAt(0).toUpperCase() + word.slice(1)
                 ).join(' ');
 
