@@ -49,21 +49,9 @@
         }
         
         .logo {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        
-        .logo-circle {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
             font-size: 1.2em;
+            font-weight: 700;
+            color: white;
         }
         
         .nav-links {
@@ -86,24 +74,7 @@
         }
         
         .theme-toggle {
-            width: 50px;
-            height: 26px;
-            background: rgba(139, 92, 246, 0.2);
-            border-radius: 13px;
-            position: relative;
-            cursor: pointer;
-        }
-        
-        .theme-toggle::after {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background: var(--primary);
-            border-radius: 50%;
-            top: 3px;
-            right: 3px;
-            transition: 0.3s;
+            display: none;
         }
         
         .hero {
@@ -514,23 +485,20 @@
 <body>
     <nav class="nav">
         <div class="nav-container">
-            <div class="logo">
-                <div class="logo-circle">K</div>
-            </div>
+            <div class="logo">kuasarkod</div>
             <ul class="nav-links">
                 <li><a href="#home">Ana Sayfa</a></li>
                 <li><a href="#services">Hizmetler</a></li>
                 <li><a href="#projects">Projeler</a></li>
                 <li><a href="#contact">İletişim</a></li>
             </ul>
-            <div class="theme-toggle"></div>
         </div>
     </nav>
 
     <section class="hero" id="home">
         <div class="hero-content">
             <div class="badge">TAM ÖZELLİKLİ WEB HİZMETLERİ</div>
-            <h1>Merhaba, Ben Can. <span class="wave-emoji">👋</span><br>Dijital ürünler geliştiriyorum.</h1>
+            <h1>Merhaba, Ben Hasancan. <span class="wave-emoji">👋</span><br>Dijital ürünler geliştiriyorum.</h1>
             <p>Backend ve frontend teknolojileri üzerine çalışan, ölçeklenebilir sistemler geliştirmeyi seven tutkulu bir yazılım geliştiriciyim. Ruby on Rails ve Laravel uzmanı olarak müşterilerime profesyonel web çözümleri sunuyorum.</p>
             <a href="#contact" class="cta-button">İletişim</a>
         </div>
@@ -723,8 +691,7 @@
     <footer>
         <div class="footer-content">
             <div class="footer-left">
-                <div class="logo-circle">K</div>
-                <span>2025 Kuasar Kod. Türkiye için üretilen çözümler • ❤️</span>
+                <span>Hasan Can Sözkan • Türkiye❤️için gelişmiş çözümler.</span>
             </div>
             <div class="footer-links">
                 <a href="#contact">İletişim</a>
