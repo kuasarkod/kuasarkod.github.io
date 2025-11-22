@@ -292,19 +292,22 @@
             font-size: 0.95em;
         }
         
-        .tech-logos {
+        .tech-badges {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 40px;
+            gap: 12px;
             flex-wrap: wrap;
-            opacity: 0.6;
+            margin-top: 40px;
         }
         
-        .tech-logos span {
-            font-size: 1.1em;
-            color: var(--text-gray);
-            font-weight: 500;
+        .tech-badges img {
+            height: 28px;
+            transition: transform 0.3s ease;
+        }
+        
+        .tech-badges img:hover {
+            transform: scale(1.1);
         }
         
         .projects-grid {
@@ -372,6 +375,63 @@
             display: block;
         }
         
+        .contact-section {
+            background: var(--darker);
+            padding: 100px 20px;
+            text-align: center;
+        }
+        
+        .contact-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .contact-content h2 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+        
+        .contact-content p {
+            font-size: 1.3em;
+            color: var(--text-gray);
+            margin-bottom: 50px;
+            line-height: 1.7;
+        }
+        
+        .contact-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+        
+        .contact-btn {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(139, 92, 246, 0.3);
+            padding: 20px 40px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-btn:hover {
+            background: rgba(139, 92, 246, 0.2);
+            border-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
+        }
+        
+        .contact-icon {
+            font-size: 1.8em;
+        }
+        
         footer {
             background: var(--darker);
             padding: 40px;
@@ -408,29 +468,6 @@
         }
         
         .footer-links a:hover {
-            color: white;
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 15px;
-        }
-        
-        .social-link {
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
-            background: rgba(255, 255, 255, 0.05);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            color: var(--text-gray);
-            transition: all 0.3s;
-        }
-        
-        .social-link:hover {
-            background: rgba(139, 92, 246, 0.2);
             color: white;
         }
         
@@ -499,7 +536,7 @@
         <div class="hero-content">
             <div class="badge">TAM ÖZELLİKLİ WEB HİZMETLERİ</div>
             <h1>Merhaba, Ben Hasancan. <span class="wave-emoji">👋</span><br>Dijital ürünler geliştiriyorum.</h1>
-            <p>Backend ve frontend teknolojileri üzerine çalışan, ölçeklenebilir sistemler geliştirmeyi seven tutkulu bir yazılım geliştiriciyim. Ruby on Rails ve Laravel uzmanı olarak müşterilerime profesyonel web çözümleri sunuyorum.</p>
+            <p>Ruby on Rails ve Laravel ile güçlü backendler, JavaScript/TypeScript ekosistemi ile modern frontendler ve Docker, Kubernetes, AWS ile bulut altyapıları kurarak uçtan uca çözümler geliştiriyorum.</p>
             <a href="#contact" class="cta-button">İletişim</a>
         </div>
         <div class="decorative-shapes">
@@ -513,7 +550,7 @@
     <section class="section" id="services">
         <div class="section-header">
             <h2 class="section-title">Web siteleri, e-ticaret mağazaları ve web uygulamaları geliştiriyorum.</h2>
-            <p class="section-subtitle">Web tasarımı, geliştirme ve arama motoru optimizasyonu dahil tam özellikli web hizmetleri sağlıyorum. Ruby on Rails, Laravel, Node.js, React, Vue.js ve Next.js gibi modern teknolojileri kullanmayı seviyorum.</p>
+            <p class="section-subtitle">Freelance yazılım geliştirici olarak işletmelere özel, ölçeklenebilir ve modern web çözümleri sunuyorum.</p>
         </div>
 
         <div class="services-grid">
@@ -535,13 +572,24 @@
         </div>
 
         <div class="tech-stack">
-            <p>Web tasarımı, geliştirme ve arama motoru optimizasyonu dahil tam özellikli web hizmetleri sağlıyorum. Özellikle Ruby on Rails, Laravel, Node.js, React, Vue.js ve Next.js gibi teknolojileri kullanmayı seviyorum.</p>
-            <div class="tech-logos">
-                <span>Ruby on Rails</span>
-                <span>Laravel</span>
-                <span>Node.js</span>
-                <span>React</span>
-                <span>Vue.js</span>
+            <div class="tech-badges">
+                <img src="https://img.shields.io/badge/Ruby-CC342D?style=flat&logo=ruby&logoColor=white" alt="Ruby">
+                <img src="https://img.shields.io/badge/Rails-CC0000?style=flat&logo=ruby-on-rails&logoColor=white" alt="Rails">
+                <img src="https://img.shields.io/badge/PHP-777BB4?style=flat&logo=php&logoColor=white" alt="PHP">
+                <img src="https://img.shields.io/badge/Laravel-FF2D20?style=flat&logo=laravel&logoColor=white" alt="Laravel">
+                <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black" alt="JavaScript">
+                <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white" alt="TypeScript">
+                <img src="https://img.shields.io/badge/React-20232A?style=flat&logo=react&logoColor=61DAFB" alt="React">
+                <img src="https://img.shields.io/badge/Next.js-000000?style=flat&logo=next.js&logoColor=white" alt="Next.js">
+                <img src="https://img.shields.io/badge/Vue.js-4FC08D?style=flat&logo=vue.js&logoColor=white" alt="Vue.js">
+                <img src="https://img.shields.io/badge/Node.js-339933?style=flat&logo=node.js&logoColor=white" alt="Node.js">
+                <img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=flat&logo=postgresql&logoColor=white" alt="PostgreSQL">
+                <img src="https://img.shields.io/badge/MongoDB-47A248?style=flat&logo=mongodb&logoColor=white" alt="MongoDB">
+                <img src="https://img.shields.io/badge/MySQL-4479A1?style=flat&logo=mysql&logoColor=white" alt="MySQL">
+                <img src="https://img.shields.io/badge/Redis-DC382D?style=flat&logo=redis&logoColor=white" alt="Redis">
+                <img src="https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white" alt="Docker">
+                <img src="https://img.shields.io/badge/Kubernetes-326CE5?style=flat&logo=kubernetes&logoColor=white" alt="Kubernetes">
+                <img src="https://img.shields.io/badge/AWS-232F3E?style=flat&logo=amazon-aws&logoColor=white" alt="AWS">
             </div>
         </div>
     </section>
@@ -688,22 +736,39 @@
         </div>
     </section>
 
+    <section class="contact-section" id="contact">
+        <div class="contact-content">
+            <h2>Benimle İletişime Geçin</h2>
+            <p>Projeleriniz için en uygun çözümü birlikte bulalım. Aşağıdaki kanallardan bana ulaşabilirsiniz.</p>
+            <div class="contact-buttons">
+                <a href="https://wa.me/905318565797" class="contact-btn" target="_blank">
+                    <span class="contact-icon">📱</span>
+                    <span>WhatsApp</span>
+                </a>
+                <a href="https://t.me/kuasarkod" class="contact-btn" target="_blank">
+                    <span class="contact-icon">✈️</span>
+                    <span>Telegram</span>
+                </a>
+                <a href="mailto:info@kuasarkod.com" class="contact-btn">
+                    <span class="contact-icon">✉️</span>
+                    <span>E-posta</span>
+                </a>
+                <a href="https://github.com/kuasarkod" class="contact-btn" target="_blank">
+                    <span class="contact-icon">💻</span>
+                    <span>GitHub</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
     <footer>
         <div class="footer-content">
             <div class="footer-left">
-                <span>Hasan Can Sözkan • Türkiye❤️için gelişmiş çözümler.</span>
+                <span>Hasan Can Sözkan • ❤️</span>
             </div>
             <div class="footer-links">
                 <a href="#contact">İletişim</a>
-                <a href="https://github.com/kuasarkod">Blog</a>
-            </div>
-            <div class="social-links">
-                <a href="https://github.com/kuasarkod" class="social-link">📘</a>
-                <a href="https://github.com/kuasarkod" class="social-link">🐦</a>
-                <a href="https://linkedin.com/in/hasancansozkan" class="social-link">💼</a>
-                <a href="https://github.com/kuasarkod" class="social-link">📷</a>
-                <a href="https://wa.me/905XXXXXXXXX" class="social-link">📌</a>
-                <a href="https://github.com/kuasarkod" class="social-link">💻</a>
+                <a href="https://github.com/kuasarkod">GitHub</a>
             </div>
         </div>
     </footer>
