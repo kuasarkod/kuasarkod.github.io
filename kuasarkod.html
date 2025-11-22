@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuasar Kod - Web Yazılım Projeleri</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            color: white;
+        }
+        
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        header p {
+            font-size: 1.3em;
+            opacity: 0.95;
+        }
+        
+        .about {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .about h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 2em;
+        }
+        
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .project-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+        
+        .project-card h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        
+        .project-card p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .tech-tag {
+            background: #f0f0f0;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            color: #667eea;
+            font-weight: 500;
+        }
+        
+        .project-link {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .project-link:hover {
+            opacity: 0.9;
+        }
+        
+        .contact {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 30px;
+        }
+        
+        .contact h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+        
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .contact-links a {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .contact-links a:hover {
+            transform: scale(1.05);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: white;
+            opacity: 0.9;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+            
+            header p {
+                font-size: 1.1em;
+            }
+            
+            .projects {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Kuasar Kod</h1>
+            <p>Türkiye için Gerçek Çözümler Üreten Web Sistemleri</p>
+        </header>
+        
+        <section class="about">
+            <h2>Hakkımda</h2>
+            <p>Merhaba! Ben küçük ve orta ölçekli işletmelerin günlük operasyonlarını kolaylaştıran, gerçek ihtiyaçlara yönelik web yazılım sistemleri geliştiriyorum. Karmaşık değil, işe yarar çözümler üretiyorum.</p>
+            <p>Sıfır sermaye ile başladım ve her projemde Türkiye'deki işletmelerin gerçek problemlerine odaklanıyorum. Amacım teknolojinin sadece büyük şirketler için değil, mahalle bakkalından muhasebeciye herkes için erişilebilir olmasını sağlamak.</p>
+        </section>
+        
+        <section class="projects">
+            <div class="project-card">
+                <h3>Muhasebeci Portal</h3>
+                <p>Küçük işletmelerin faturalarını ve dekontlarını fotoğrafla yükleyip muhasebeciyle paylaşabildiği sistem. WhatsApp karmaşasına son.</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">Node.js</span>
+                    <span class="tech-tag">API</span>
+                </div>
+                <a href="#" class="project-link">Demo Görüntüle</a>
+            </div>
+            
+            <div class="project-card">
+                <h3>Bakkal Dijital Defter</h3>
+                <p>Mahalle bakkalları için veresiye defteri, stok takibi ve WhatsApp sipariş entegrasyonu. Basit ve kullanışlı.</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">React</span>
+                    <span class="tech-tag">WhatsApp API</span>
+                    <span class="tech-tag">PWA</span>
+                </div>
+                <a href="#" class="project-link">Demo Görüntüle</a>
+            </div>
+            
+            <div class="project-card">
+                <h3>Kuaför Randevu+</h3>
+                <p>Klasik randevu sisteminden fazlası: Müşteri saç kesim geçmişi, tercih edilen stil fotoğrafları ve ürün takibi.</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Vue.js</span>
+                    <span class="tech-tag">SMS API</span>
+                    <span class="tech-tag">Cloud Storage</span>
+                </div>
+                <a href="#" class="project-link">Demo Görüntüle</a>
+            </div>
+            
+            <div class="project-card">
+                <h3>Oto Yıkama Abonelik</h3>
+                <p>Oto yıkamacılar için plaka tanıma, paket takibi ve QR kod sistemi. Müşteri sadakati garantili.</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Python</span>
+                    <span class="tech-tag">QR Code</span>
+                    <span class="tech-tag">MySQL</span>
+                </div>
+                <a href="#" class="project-link">Demo Görüntüle</a>
+            </div>
+            
+            <div class="project-card">
+                <h3>Emlakçı Mesaj Merkezi</h3>
+                <p>Tüm platformlardan gelen mesajları tek yerden yönetme. Sahibinden, Hürriyet ve diğer sitelerin API entegrasyonu.</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Node.js</span>
+                    <span class="tech-tag">WebSocket</span>
+                    <span class="tech-tag">Multi-API</span>
+                </div>
+                <a href="#" class="project-link">Demo Görüntüle</a>
+            </div>
+            
+            <div class="project-card">
+                <h3>Pastane Doğum Günü Bot</h3>
+                <p>Pastaneler için otomatik doğum günü hatırlatıcı ve kampanya gönderim sistemi. Satışları artırıyor.</p>
+                <div class="tech-stack">
+                    <span class="tech-tag">Telegram Bot</span>
+                    <span class="tech-tag">Cron Jobs</span>
+                    <span class="tech-tag">SMS</span>
+                </div>
+                <a href="#" class="project-link">Demo Görüntüle</a>
+            </div>
+        </section>
+        
+        <section class="contact">
+            <h2>İletişim</h2>
+            <p>Projem hakkında konuşmak veya işbirliği yapmak için benimle iletişime geçebilirsiniz.</p>
+            <div class="contact-links">
+                <a href="https://github.com/kuasarkod" target="_blank">GitHub</a>
+                <a href="mailto:info@kuasarkod.com">E-posta Gönder</a>
+                <a href="https://wa.me/905XXXXXXXXX" target="_blank">WhatsApp</a>
+            </div>
+        </section>
+        
+        <footer>
+            <p>&copy; 2025 Kuasar Kod. Türkiye için üretilen çözümler.</p>
+        </footer>
+    </div>
+</body>
+</html>
