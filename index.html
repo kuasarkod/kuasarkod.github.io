@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hasan Can Sözkan - Full Stack Developer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --primary: #8b5cf6;
+            --secondary: #6366f1;
+            --dark: #0f0f23;
+            --darker: #0a0a15;
+            --cyan: #22d3ee;
+            --pink: #ec4899;
+            --text-gray: #94a3b8;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'SF Pro Display', Roboto, sans-serif;
+            line-height: 1.6;
+            color: white;
+            background: var(--dark);
+            overflow-x: hidden;
+        }
+        
+        .nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 25px 0;
+            z-index: 100;
+            background: rgba(15, 15, 35, 0.8);
+            backdrop-filter: blur(10px);
+        }
+        
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.2em;
+            font-weight: 700;
+            color: white;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: var(--text-gray);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 0.95em;
+        }
+        
+        .nav-links a:hover {
+            color: white;
+        }
+        
+        .theme-toggle {
+            display: none;
+        }
+        
+        .hero {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 180px 40px 120px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            position: relative;
+        }
+        
+        .decorative-shapes {
+            position: absolute;
+            right: 10%;
+            top: 20%;
+            width: 400px;
+            height: 400px;
+            pointer-events: none;
+        }
+        
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.6;
+        }
+        
+        .shape-1 {
+            width: 200px;
+            height: 200px;
+            border: 3px solid var(--primary);
+            top: 0;
+            right: 0;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .shape-2 {
+            width: 100px;
+            height: 100px;
+            background: var(--cyan);
+            top: 30%;
+            right: 20%;
+            animation: float 4s ease-in-out infinite reverse;
+        }
+        
+        .shape-3 {
+            width: 80px;
+            height: 80px;
+            background: var(--pink);
+            bottom: 20%;
+            right: 40%;
+            animation: float 5s ease-in-out infinite;
+        }
+        
+        .shape-4 {
+            width: 150px;
+            height: 150px;
+            border: 3px solid var(--pink);
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            bottom: 0;
+            right: 10%;
+            animation: morph 8s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        
+        @keyframes morph {
+            0%, 100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+            50% { border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%; }
+        }
+        
+        .badge {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: var(--primary);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(139, 92, 246, 0.3);
+        }
+        
+        .hero-content h1 {
+            font-size: 4.5em;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 25px;
+        }
+        
+        .wave-emoji {
+            display: inline-block;
+            animation: wave 2s ease-in-out infinite;
+        }
+        
+        @keyframes wave {
+            0%, 100% { transform: rotate(0deg); }
+            10%, 30% { transform: rotate(14deg); }
+            20% { transform: rotate(-8deg); }
+            40%, 100% { transform: rotate(0deg); }
+        }
+        
+        .hero-content p {
+            font-size: 1.2em;
+            color: var(--text-gray);
+            margin-bottom: 35px;
+            line-height: 1.7;
+            max-width: 580px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: var(--dark);
+            padding: 16px 36px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(255, 255, 255, 0.2);
+        }
+        
+        .section {
+            max-width: 1400px;
+            margin: 120px auto;
+            padding: 0 40px;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+        
+        .section-badge {
+            display: inline-block;
+            background: rgba(139, 92, 246, 0.15);
+            color: var(--primary);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin-bottom: 20px;
+            border: 1px solid rgba(139, 92, 246, 0.3);
+        }
+        
+        .section-title {
+            font-size: 3em;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+        
+        .section-subtitle {
+            color: var(--text-gray);
+            font-size: 1.2em;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+        
+        .service-card {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .service-card:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-5px);
+            border-color: rgba(139, 92, 246, 0.3);
+        }
+        
+        .service-icon {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        
+        .service-card h3 {
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .service-card p {
+            color: var(--text-gray);
+            line-height: 1.6;
+            font-size: 0.95em;
+        }
+        
+        .tech-stack {
+            text-align: center;
+            margin-top: 60px;
+        }
+        
+        .tech-stack p {
+            color: var(--text-gray);
+            margin-bottom: 30px;
+            font-size: 0.95em;
+        }
+        
+        .tech-badges {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+        
+        .tech-badges img {
+            height: 28px;
+            transition: transform 0.3s ease;
+        }
+        
+        .tech-badges img:hover {
+            transform: scale(1.1);
+        }
+        
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .project-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: rgba(139, 92, 246, 0.3);
+        }
+        
+        .project-image {
+            width: 100%;
+            height: 240px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-tag {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--dark);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.75em;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        
+        .project-image span {
+            font-size: 4em;
+        }
+        
+        .project-content {
+            padding: 30px;
+        }
+        
+        .project-content h3 {
+            font-size: 1.4em;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .project-url {
+            color: var(--text-gray);
+            font-size: 0.85em;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .contact-section {
+            background: var(--darker);
+            padding: 100px 20px;
+            text-align: center;
+        }
+        
+        .contact-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .contact-content h2 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+        
+        .contact-content p {
+            font-size: 1.3em;
+            color: var(--text-gray);
+            margin-bottom: 50px;
+            line-height: 1.7;
+        }
+        
+        .contact-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+        
+        .contact-btn {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(139, 92, 246, 0.3);
+            padding: 20px 40px;
+            border-radius: 12px;
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+        }
+        
+        .contact-btn:hover {
+            background: rgba(139, 92, 246, 0.2);
+            border-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
+        }
+        
+        .contact-icon {
+            font-size: 1.8em;
+        }
+        
+        footer {
+            background: var(--darker);
+            padding: 40px;
+            text-align: center;
+            margin-top: 120px;
+        }
+        
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .footer-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: var(--text-gray);
+            font-size: 0.9em;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 25px;
+        }
+        
+        .footer-links a {
+            color: var(--text-gray);
+            text-decoration: none;
+            font-size: 0.9em;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        @media (max-width: 1200px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 140px 40px 80px;
+            }
+            
+            .hero-content h1 {
+                font-size: 3.5em;
+            }
+            
+            .hero-content p {
+                margin: 0 auto 35px;
+            }
+            
+            .decorative-shapes {
+                display: none;
+            }
+            
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5em;
+            }
+            
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="logo">kuasarkod</div>
+            <ul class="nav-links">
+                <li><a href="#home">Ana Sayfa</a></li>
+                <li><a href="#services">Hizmetler</a></li>
+                <li><a href="#projects">Projeler</a></li>
+                <li><a href="#contact">İletişim</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <div class="badge">TAM ÖZELLİKLİ WEB HİZMETLERİ</div>
+            <h1>Merhaba, Ben Hasancan. <span class="wave-emoji">👋</span><br>Dijital ürünler geliştiriyorum.</h1>
+            <p>Backend ve frontend teknolojileri üzerine çalışan, ölçeklenebilir sistemler geliştirmeyi seven tutkulu bir yazılım geliştiriciyim. Ruby on Rails ve Laravel uzmanı olarak müşterilerime profesyonel web çözümleri sunuyorum....</p>
+            <a href="#contact" class="cta-button">İletişim</a>
+        </div>
+        <div class="decorative-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+        </div>
+    </section>
+
+    <section class="section" id="services">
+        <div class="section-header">
+            <h2 class="section-title">Web siteleri, e-ticaret mağazaları ve web uygulamaları geliştiriyorum.</h2>
+            <p class="section-subtitle">Freelance yazılım geliştirici olarak işletmelere özel, ölçeklenebilir ve modern web çözümleri sunuyorum.</p>
+        </div>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">💻</div>
+                <h3>Web Uygulamaları</h3>
+                <p>Ruby on Rails, Laravel ve Node.js kullanarak güçlü ve ölçeklenebilir web uygulamaları geliştiriyorum.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🛒</div>
+                <h3>E-Ticaret</h3>
+                <p>Modern e-ticaret platformları ve özel çözümler geliştirerek işletmelerin online satışlarını artırıyorum.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🚀</div>
+                <h3>Full-Stack Development</h3>
+                <p>React, Vue.js ve modern frontend teknolojileriyle birlikte RESTful API'lar ve mikroservis mimarileri geliştiriyorum.</p>
+            </div>
+        </div>
+
+        <div class="tech-stack">
+            <div class="tech-badges">
+                <img src="https://img.shields.io/badge/Ruby-CC342D?style=flat&logo=ruby&logoColor=white" alt="Ruby">
+                <img src="https://img.shields.io/badge/Rails-CC0000?style=flat&logo=ruby-on-rails&logoColor=white" alt="Rails">
+                <img src="https://img.shields.io/badge/PHP-777BB4?style=flat&logo=php&logoColor=white" alt="PHP">
+                <img src="https://img.shields.io/badge/Laravel-FF2D20?style=flat&logo=laravel&logoColor=white" alt="Laravel">
+                <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black" alt="JavaScript">
+                <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white" alt="TypeScript">
+                <img src="https://img.shields.io/badge/React-20232A?style=flat&logo=react&logoColor=61DAFB" alt="React">
+                <img src="https://img.shields.io/badge/Next.js-000000?style=flat&logo=next.js&logoColor=white" alt="Next.js">
+                <img src="https://img.shields.io/badge/Vue.js-4FC08D?style=flat&logo=vue.js&logoColor=white" alt="Vue.js">
+                <img src="https://img.shields.io/badge/Node.js-339933?style=flat&logo=node.js&logoColor=white" alt="Node.js">
+                <img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=flat&logo=postgresql&logoColor=white" alt="PostgreSQL">
+                <img src="https://img.shields.io/badge/MongoDB-47A248?style=flat&logo=mongodb&logoColor=white" alt="MongoDB">
+                <img src="https://img.shields.io/badge/MySQL-4479A1?style=flat&logo=mysql&logoColor=white" alt="MySQL">
+                <img src="https://img.shields.io/badge/Redis-DC382D?style=flat&logo=redis&logoColor=white" alt="Redis">
+                <img src="https://img.shields.io/badge/Docker-2496ED?style=flat&logo=docker&logoColor=white" alt="Docker">
+                <img src="https://img.shields.io/badge/Kubernetes-326CE5?style=flat&logo=kubernetes&logoColor=white" alt="Kubernetes">
+                <img src="https://img.shields.io/badge/AWS-232F3E?style=flat&logo=amazon-aws&logoColor=white" alt="AWS">
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="projects">
+        <div class="section-header">
+            <div class="section-badge">WEB GELİŞTİRME PROJELERİ</div>
+            <h2 class="section-title">PROJELER</h2>
+            <p class="section-subtitle">Ruby on Rails, Laravel ve modern JavaScript framework'leri kullanarak geliştirdiğim profesyonel web projeleri.</p>
+        </div>
+
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%)">
+                    <span>💎</span>
+                    <div class="project-tag">RUBY ON RAILS</div>
+                </div>
+                <div class="project-content">
+                    <h3>E-Ticaret Platform</h3>
+                    <span class="project-url">Ruby on Rails • PostgreSQL • Redis</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%)">
+                    <span>🔴</span>
+                    <div class="project-tag">LARAVEL</div>
+                </div>
+                <div class="project-content">
+                    <h3>Kurumsal Web Uygulaması</h3>
+                    <span class="project-url">Laravel • MySQL • Vue.js</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)">
+                    <span>⚛️</span>
+                    <div class="project-tag">REACT & NEXT.JS</div>
+                </div>
+                <div class="project-content">
+                    <h3>Modern Dashboard</h3>
+                    <span class="project-url">Next.js • React • TypeScript</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%)">
+                    <span>🔄</span>
+                    <div class="project-tag">RESTFUL API</div>
+                </div>
+                <div class="project-content">
+                    <h3>Mikroservis Mimarisi</h3>
+                    <span class="project-url">Node.js • Express • MongoDB</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%)">
+                    <span>🎨</span>
+                    <div class="project-tag">VUE.JS</div>
+                </div>
+                <div class="project-content">
+                    <h3>Single Page Application</h3>
+                    <span class="project-url">Vue.js 3 • Pinia • Vite</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)">
+                    <span>☁️</span>
+                    <div class="project-tag">CLOUD & DEVOPS</div>
+                </div>
+                <div class="project-content">
+                    <h3>AWS Deployment Pipeline</h3>
+                    <span class="project-url">Docker • Kubernetes • AWS</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image" style="background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%)">
+                    <span>📱</span>
+                    <div class="project-tag">RESPONSIVE DESIGN</div>
+                </div>
+                <div class="project-content">
+                    <h3>Mobil Uyumlu Web Sitesi</h3>
+                    <span class="project-url">HTML5 • CSS3 • JavaScript</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image" style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%)">
+                    <span>🔐</span>
+                    <div class="project-tag">AUTHENTICATION</div>
+                </div>
+                <div class="project-content">
+                    <h3>Güvenli Giriş Sistemi</h3>
+                    <span class="project-url">JWT • OAuth2 • Redis</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image" style="background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 100%)">
+                    <span>📊</span>
+                    <div class="project-tag">DATA VISUALIZATION</div>
+                </div>
+                <div class="project-content">
+                    <h3>Analitik Dashboard</h3>
+                    <span class="project-url">Chart.js • D3.js • React</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image" style="background: linear-gradient(135deg, #f5576c 0%, #f093fb 100%)">
+                    <span>🚀</span>
+                    <div class="project-tag">PERFORMANCE</div>
+                </div>
+                <div class="project-content">
+                    <h3>Yüksek Performanslı API</h3>
+                    <span class="project-url">Node.js • Redis • Nginx</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image" style="background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%)">
+                    <span>🔧</span>
+                    <div class="project-tag">CI/CD PIPELINE</div>
+                </div>
+                <div class="project-content">
+                    <h3>Otomatik Deployment</h3>
+                    <span class="project-url">GitHub Actions • Docker • AWS</span>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-image" style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)">
+                    <span>🌐</span>
+                    <div class="project-tag">FULL-STACK</div>
+                </div>
+                <div class="project-content">
+                    <h3>Kapsamlı Web Projesi</h3>
+                    <span class="project-url">Rails • React • PostgreSQL</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+        <div class="contact-content">
+            <h2>Benimle İletişime Geçin</h2>
+            <p>Projeleriniz için en uygun çözümü birlikte bulalım. Aşağıdaki kanallardan bana ulaşabilirsiniz.</p>
+            <div class="contact-buttons">
+                <a href="https://wa.me/905318565797" class="contact-btn" target="_blank">
+                    <span class="contact-icon">📱</span>
+                    <span>WhatsApp</span>
+                </a>
+                <a href="https://t.me/kuasarkod" class="contact-btn" target="_blank">
+                    <span class="contact-icon">✈️</span>
+                    <span>Telegram</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-left">
+                <span>Hasan Can Sözkan • ❤️</span>
+            </div>
+            <div class="footer-links">
+                <a href="#contact">İletişim</a>
+                <a href="https://github.com/kuasarkod">GitHub</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+
+
+
+
