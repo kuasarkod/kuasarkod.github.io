@@ -1,0 +1,1657 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hasancan Sözkan | Developer Portfolio</title>
+    <meta name="description" content="Hasancan Sözkan - Ruby on Rails, Laravel, Node.js ve modern web teknolojileri ile ölçeklenebilir backend servisler ve full-stack uygulamalar geliştiren yazılım geliştirici." />
+    <style>
+        :root {
+            --bg: #f5f7fb;
+            --bg-elevated: #ffffff;
+            --bg-soft: #eef2ff;
+            --primary: #2563eb;
+            --primary-soft: #dbeafe;
+            --accent: #f97316;
+            --accent-soft: #ffedd5;
+            --text-main: #0f172a;
+            --text-muted: #6b7280;
+            --border-subtle: #e2e8f0;
+            --shadow-soft: 0 22px 45px rgba(15, 23, 42, 0.12);
+            --radius-lg: 18px;
+            --radius-pill: 999px;
+            --transition-fast: 180ms ease-out;
+            --max-width: 1080px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html, body {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif;
+            background: radial-gradient(circle at top, #e0edff 0, #f5f7fb 38%, #fdfdfd 100%);
+            color: var(--text-main);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .page-shell {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            backdrop-filter: blur(16px);
+            background: rgba(245, 247, 251, 0.85);
+            border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+        }
+
+        .header-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 1rem 1.25rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .brand-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 40%;
+            background: conic-gradient(from 160deg, #2563eb, #4f46e5, #f97316, #2563eb);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #f9fafb;
+            font-weight: 600;
+            font-size: 0.9rem;
+            box-shadow: 0 10px 24px rgba(37, 99, 235, 0.4);
+        }
+
+        .brand-avatar img {
+            width: 100%;
+            height: 100%;
+            border-radius: 40%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .brand-text-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .brand-text-sub {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 0.9rem;
+        }
+
+        .nav-link {
+            padding: 0.4rem 0.8rem;
+            border-radius: 999px;
+            color: var(--text-muted);
+            transition: background var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
+        }
+
+        .nav-link:hover {
+            color: var(--text-main);
+            background: rgba(219, 234, 254, 0.9);
+            transform: translateY(-1px);
+        }
+
+        .nav-cta {
+            padding: 0.45rem 1rem;
+            border-radius: var(--radius-pill);
+            background: #111827;
+            color: #f9fafb;
+            font-size: 0.82rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            border: 1px solid rgba(15, 23, 42, 0.8);
+            box-shadow: 0 12px 30px rgba(15, 23, 42, 0.25);
+            transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+        }
+
+        .nav-cta span {
+            font-size: 0.9rem;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-1px) translateX(0.5px);
+            background: #020617;
+            box-shadow: 0 18px 40px rgba(15, 23, 42, 0.35);
+        }
+
+        .nav-cta-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: var(--radius-pill);
+            background: #22c55e;
+            box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.2);
+        }
+
+        main {
+            flex: 1;
+        }
+
+        .hero-section {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 3.5rem 1.25rem 3rem;
+            display: grid;
+            grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.25rem 0.75rem 0.25rem 0.3rem;
+            border-radius: var(--radius-pill);
+            background: rgba(219, 234, 254, 0.9);
+            border: 1px solid rgba(191, 219, 254, 0.9);
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            margin-bottom: 0.9rem;
+        }
+
+        .hero-dot-pulse {
+            width: 9px;
+            height: 9px;
+            border-radius: var(--radius-pill);
+            background: #22c55e;
+            box-shadow: 0 0 0 6px rgba(34, 197, 94, 0.2);
+        }
+
+        .hero-title {
+            font-size: clamp(2.35rem, 4vw, 3.1rem);
+            letter-spacing: -0.03em;
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+        }
+
+        .hero-gradient {
+            background: linear-gradient(120deg, #1d4ed8, #4f46e5, #f97316);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1rem;
+            color: var(--text-muted);
+            max-width: 34rem;
+            margin-bottom: 1.4rem;
+        }
+
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.9rem;
+            margin-bottom: 1.8rem;
+        }
+
+        .hero-pill {
+            padding: 0.35rem 0.9rem;
+            border-radius: var(--radius-pill);
+            border: 1px solid var(--border-subtle);
+            background: rgba(255, 255, 255, 0.8);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.9rem;
+            align-items: center;
+        }
+
+        .btn-primary {
+            padding: 0.7rem 1.4rem;
+            border-radius: var(--radius-pill);
+            background: linear-gradient(135deg, #2563eb, #4f46e5);
+            color: #f9fafb;
+            border: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            box-shadow: 0 18px 40px rgba(37, 99, 235, 0.45);
+            transition: transform var(--transition-fast), box-shadow var(--transition-fast), filter var(--transition-fast);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px) translateX(0.5px);
+            filter: brightness(1.03);
+            box-shadow: 0 22px 45px rgba(30, 64, 175, 0.55);
+        }
+
+        .btn-secondary {
+            padding: 0.7rem 1.25rem;
+            border-radius: var(--radius-pill);
+            border: 1px solid rgba(148, 163, 184, 0.7);
+            background: rgba(255, 255, 255, 0.85);
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            color: var(--text-main);
+            transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+        }
+
+        .btn-secondary:hover {
+            background: #f9fafb;
+            transform: translateY(-1px);
+            box-shadow: 0 10px 24px rgba(148, 163, 184, 0.38);
+        }
+
+        .btn-icon-circle {
+            width: 22px;
+            height: 22px;
+            border-radius: 999px;
+            background: rgba(15, 23, 42, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.68rem;
+        }
+
+        .hero-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.25rem;
+            margin-top: 1.8rem;
+        }
+
+        .stat-item {
+            min-width: 90px;
+        }
+
+        .stat-value {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .hero-visual-wrapper {
+            position: relative;
+        }
+
+        .hero-card {
+            position: relative;
+            border-radius: 26px;
+            background: radial-gradient(circle at top left, #eff6ff, #ffffff 50%, #f8fafc 100%);
+            box-shadow: var(--shadow-soft);
+            padding: 1.6rem 1.6rem 1.4rem;
+            overflow: hidden;
+        }
+
+        .hero-orbit {
+            position: absolute;
+            inset: -50%;
+            background: conic-gradient(from 220deg, rgba(37, 99, 235, 0.22), rgba(248, 250, 252, 0.3), rgba(248, 113, 113, 0.28), rgba(248, 250, 252, 0.3));
+            opacity: 0.9;
+            filter: blur(26px);
+        }
+
+        .hero-profile {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .hero-profile-main {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .hero-photo {
+            flex-shrink: 0;
+            width: 86px;
+            height: 86px;
+            border-radius: 26px;
+            background: radial-gradient(circle at 20% 0, #fef3c7, #1d4ed8 38%, #020617 100%);
+            padding: 3px;
+        }
+
+        .hero-photo-inner {
+            width: 100%;
+            height: 100%;
+            border-radius: 23px;
+            background: radial-gradient(circle at 30% 0, #fef9c3, #0b1220 60%, #020617 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #e5e7eb;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .hero-photo-inner img {
+            width: 100%;
+            height: 100%;
+            border-radius: 23px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .hero-profile-text {
+            flex: 1;
+        }
+
+        .hero-profile-name {
+            font-weight: 600;
+            font-size: 1.05rem;
+            margin-bottom: 0.15rem;
+        }
+
+        .hero-profile-role {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 0.45rem;
+        }
+
+        .hero-profile-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.35rem;
+        }
+
+        .chip {
+            padding: 0.3rem 0.7rem;
+            border-radius: 999px;
+            background: rgba(15, 23, 42, 0.03);
+            border: 1px solid rgba(148, 163, 184, 0.55);
+            font-size: 0.74rem;
+            color: var(--text-muted);
+        }
+
+        .chip-primary {
+            background: rgba(37, 99, 235, 0.08);
+            border-color: rgba(37, 99, 235, 0.45);
+            color: #1d4ed8;
+        }
+
+        .hero-profile-meta {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.8rem;
+            font-size: 0.78rem;
+        }
+
+        .meta-card {
+            padding: 0.65rem 0.75rem;
+            border-radius: 14px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(226, 232, 240, 0.9);
+        }
+
+        .meta-label {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            margin-bottom: 0.18rem;
+        }
+
+        .meta-value {
+            font-size: 0.86rem;
+            font-weight: 500;
+        }
+
+        .hero-floating-card {
+            position: absolute;
+            right: -6px;
+            bottom: 10px;
+            padding: 0.55rem 0.9rem;
+            background: #020617;
+            color: #e5e7eb;
+            font-size: 0.78rem;
+            border-radius: 999px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 16px 35px rgba(15, 23, 42, 0.9);
+        }
+
+        .hero-floating-dot {
+            width: 18px;
+            height: 18px;
+            border-radius: 999px;
+            background: radial-gradient(circle at 25% 15%, #facc15, #f97316 55%, #b91c1c 100%);
+        }
+
+        .section {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 1.5rem 1.25rem 3rem;
+        }
+
+        .section-header {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+            margin-bottom: 1.6rem;
+        }
+
+        #contact .section-header {
+            align-items: center;
+            text-align: center;
+        }
+
+        #about .section-header,
+        #skills .section-header,
+        #projects .section-header {
+            align-items: center;
+            text-align: center;
+        }
+
+        .section-kicker {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #4f46e5;
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        .section-description {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            max-width: 32rem;
+        }
+
+        .section-card-row {
+            display: grid;
+            grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+            gap: 1.6rem;
+        }
+
+        .card {
+            border-radius: var(--radius-lg);
+            background: rgba(255, 255, 255, 0.96);
+            box-shadow: 0 18px 40px rgba(148, 163, 184, 0.22);
+            border: 1px solid rgba(226, 232, 240, 0.96);
+            padding: 1.4rem 1.5rem;
+        }
+
+        .card-soft {
+            background: linear-gradient(145deg, #eef2ff, #ffffff);
+        }
+
+        .card-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .card-text {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .about-list {
+            margin-top: 1rem;
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.8rem;
+            font-size: 0.85rem;
+        }
+
+        .about-item-label {
+            color: var(--text-muted);
+            font-size: 0.78rem;
+            margin-bottom: 0.1rem;
+        }
+
+        .about-item-value {
+            font-weight: 500;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 0.7rem;
+            font-size: 0.8rem;
+            margin-top: 0.9rem;
+        }
+
+        .skill-pill {
+            padding: 0.45rem 0.65rem;
+            border-radius: 999px;
+            border: 1px solid rgba(209, 213, 219, 0.95);
+            background: rgba(249, 250, 251, 0.95);
+            display: inline-flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.4rem;
+        }
+
+        .skill-pill span {
+            font-size: 0.8rem;
+        }
+
+        .skill-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 999px;
+            background: #22c55e;
+        }
+
+        .tech-badges-group {
+            margin-top: 0.9rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+        }
+
+        .tech-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+        }
+
+        .tech-badge {
+            padding: 0.32rem 0.7rem;
+            border-radius: 999px;
+            font-size: 0.78rem;
+            font-weight: 500;
+            letter-spacing: 0.01em;
+            background: #e5e7eb;
+            color: #111827;
+            border: 1px solid rgba(148, 163, 184, 0.7);
+            box-shadow: 0 8px 18px rgba(148, 163, 184, 0.35);
+        }
+
+        .tech-badge.badge-red {
+            background: #fee2e2;
+            border-color: #fecaca;
+            color: #b91c1c;
+        }
+
+        .tech-badge.badge-amber {
+            background: #fef3c7;
+            border-color: #fde68a;
+            color: #92400e;
+        }
+
+        .tech-badge.badge-blue {
+            background: #dbeafe;
+            border-color: #bfdbfe;
+            color: #1d4ed8;
+        }
+
+        .tech-badge.badge-green {
+            background: #dcfce7;
+            border-color: #bbf7d0;
+            color: #166534;
+        }
+
+        .tech-badge.badge-slate {
+            background: #e5e7eb;
+            border-color: #d1d5db;
+            color: #111827;
+        }
+
+        .skill-category-label {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            margin-top: 0.8rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 1.3rem;
+        }
+
+        .project-card {
+            border-radius: 18px;
+            background: #ffffff;
+            border: 1px solid rgba(226, 232, 240, 0.95);
+            padding: 1.05rem 1.05rem 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            cursor: pointer;
+            transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(37, 99, 235, 0.65);
+            box-shadow: 0 20px 40px rgba(148, 163, 184, 0.4);
+        }
+
+        .project-badge-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .project-tag {
+            padding: 0.25rem 0.6rem;
+            border-radius: 999px;
+            font-size: 0.72rem;
+            background: rgba(37, 99, 235, 0.08);
+            color: #1d4ed8;
+        }
+
+        .project-name {
+            font-size: 0.98rem;
+            font-weight: 600;
+        }
+
+        .project-desc {
+            font-size: 0.84rem;
+            color: var(--text-muted);
+        }
+
+        .project-footer {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            color: #1d4ed8;
+        }
+
+        .project-link-arrow {
+            font-size: 0.78rem;
+            transform: translateY(1px);
+        }
+
+        .project-tech {
+            color: var(--text-muted);
+            font-size: 0.76rem;
+        }
+
+        .project-modal-backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.72);
+            backdrop-filter: blur(18px);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            z-index: 40;
+        }
+
+        .project-modal-backdrop.is-open {
+            display: flex;
+        }
+
+        .project-modal {
+            max-width: min(1280px, 100%);
+            width: 100%;
+            border-radius: 22px;
+            background: radial-gradient(circle at top left, #eff6ff, #ffffff 45%, #f8fafc 100%);
+            box-shadow: 0 28px 80px rgba(15, 23, 42, 0.65);
+            padding: 1.6rem 1.8rem 1.5rem;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .project-modal-close {
+            position: absolute;
+            top: 0.9rem;
+            right: 1rem;
+            border: none;
+            background: rgba(15, 23, 42, 0.06);
+            border-radius: 999px;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .project-modal-header {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+        }
+
+        .project-modal-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .project-modal-subtitle {
+            font-size: 0.86rem;
+            color: var(--text-muted);
+        }
+
+        .project-modal-carousel {
+            margin-top: 0.4rem;
+            border-radius: 18px;
+            background: #020617;
+            padding: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .project-modal-arrow {
+            border: none;
+            background: rgba(15, 23, 42, 0.7);
+            color: #e5e7eb;
+            width: 32px;
+            height: 32px;
+            border-radius: 999px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 0.9rem;
+        }
+
+        .project-modal-viewport {
+            flex: 1;
+            border-radius: 14px;
+            overflow: hidden;
+            position: relative;
+            background: radial-gradient(circle at top, #1d4ed8, #020617 55%);
+            min-height: 440px;
+            max-height: 70vh;
+        }
+
+        .project-modal-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: none;
+        }
+
+        .project-modal-empty {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            text-align: center;
+            font-size: 0.86rem;
+            color: #e5e7eb;
+            opacity: 0.9;
+        }
+
+        .project-modal-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.75rem;
+            margin-top: 0.4rem;
+            font-size: 0.8rem;
+        }
+
+        .project-modal-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.55rem 1rem;
+            border-radius: 999px;
+            background: linear-gradient(135deg, #1d4ed8, #4f46e5);
+            color: #f9fafb;
+            font-size: 0.82rem;
+            text-decoration: none;
+        }
+
+        @media (max-width: 720px) {
+            .project-modal {
+                padding-inline: 1rem;
+            }
+
+            .project-modal-carousel {
+                padding-inline: 0.6rem;
+            }
+
+            .project-modal-arrow {
+                display: none;
+            }
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+            gap: 1.5rem;
+        }
+
+        .contact-highlight {
+            border-radius: 18px;
+            padding: 1.2rem 1.3rem;
+            background: linear-gradient(135deg, #111827, #0f172a);
+            color: #e5e7eb;
+        }
+
+        .contact-highlight-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+            text-align: center;
+        }
+
+        .contact-highlight-text {
+            font-size: 0.88rem;
+            color: #cbd5f5;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .contact-chip-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.1rem;
+        }
+
+        .contact-chip {
+            padding: 0.3rem 0.7rem;
+            border-radius: 999px;
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid rgba(55, 65, 81, 0.9);
+            font-size: 0.78rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .contact-chip-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 999px;
+            background: #22c55e;
+        }
+
+        .contact-links {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 0.6rem;
+            font-size: 0.85rem;
+        }
+
+        .contact-link-item {
+            padding: 0.45rem 0.7rem;
+            border-radius: 999px;
+            background: rgba(15, 23, 42, 0.96);
+            border: 1px solid rgba(55, 65, 81, 0.96);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .contact-link-label {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .contact-link-icon-circle {
+            width: 18px;
+            height: 18px;
+            border-radius: 999px;
+            background: rgba(15, 23, 42, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.72rem;
+        }
+
+        .contact-form-card {
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.98);
+            border: 1px solid rgba(226, 232, 240, 0.96);
+            padding: 1.2rem 1.3rem 1.3rem;
+            box-shadow: 0 12px 32px rgba(148, 163, 184, 0.3);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.8rem;
+        }
+
+        .form-field {
+            display: flex;
+            flex-direction: column;
+            gap: 0.15rem;
+            font-size: 0.8rem;
+        }
+
+        .form-label {
+            color: var(--text-muted);
+        }
+
+        .form-input,
+        .form-textarea {
+            border-radius: 10px;
+            border: 1px solid rgba(209, 213, 219, 0.9);
+            padding: 0.55rem 0.65rem;
+            font-size: 0.85rem;
+            font-family: inherit;
+            outline: none;
+            background: #f9fafb;
+            transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            border-color: rgba(37, 99, 235, 0.8);
+            box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.6);
+            background: #ffffff;
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 110px;
+        }
+
+        .form-footer {
+            margin-top: 0.9rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.7rem;
+        }
+
+        .form-hint {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+        }
+
+        .site-footer {
+            border-top: 1px solid rgba(226, 232, 240, 0.9);
+            background: rgba(248, 250, 252, 0.98);
+        }
+
+        .footer-inner {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 1.25rem 1.25rem 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0.75rem;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+        }
+
+        .footer-link {
+            padding: 0.25rem 0.6rem;
+            border-radius: 999px;
+            border: 1px solid rgba(209, 213, 219, 0.9);
+            background: #f9fafb;
+        }
+
+        @keyframes float-card {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+            100% { transform: translateY(0); }
+        }
+
+        @keyframes fade-up {
+            0% { opacity: 0; transform: translateY(16px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-card {
+            animation: float-card 9s ease-in-out infinite;
+        }
+
+        .section {
+            animation: fade-up 0.6s ease-out;
+        }
+
+        @media (max-width: 900px) {
+            .hero-section {
+                grid-template-columns: minmax(0, 1fr);
+                gap: 2rem;
+                padding-top: 2.6rem;
+            }
+
+            .hero-visual-wrapper {
+                order: -1;
+            }
+
+            .section-card-row,
+            .contact-grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .projects-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .header-inner {
+                padding-inline: 1rem;
+            }
+        }
+
+        @media (max-width: 720px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-section {
+                padding-inline: 1rem;
+            }
+
+            .section {
+                padding-inline: 1rem;
+            }
+
+            .hero-card {
+                padding: 1.3rem 1.2rem 1.1rem;
+            }
+
+            .hero-photo {
+                width: 76px;
+                height: 76px;
+            }
+
+            .about-list,
+            .skills-grid,
+            .form-grid,
+            .contact-links {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .projects-grid {
+                grid-template-columns: minmax(0, 1fr);
+            }
+
+            .form-footer {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="page-shell">
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="#home" class="brand">
+                <div class="brand-avatar"><img src="126435123.jfif" alt="Hasancan Sözkan avatar" /></div>
+                <div>
+                    <div class="brand-text-title">Hasancan Sözkan</div>
+                    <div class="brand-text-sub">Backend &amp; Full-stack Developer</div>
+                </div>
+            </a>
+            <nav class="nav-links">
+                <a href="#about" class="nav-link">Hakkımda</a>
+                <a href="#skills" class="nav-link">Yetenekler</a>
+                <a href="#projects" class="nav-link">Projeler</a>
+                <a href="#contact" class="nav-link">İletişim</a>
+                <a href="https://github.com/kuasarkod" class="nav-cta" target="_blank" rel="noreferrer">
+                    <span class="nav-cta-dot"></span>
+                    <span>GitHub Profilim</span>
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="home">
+        <section class="hero-section">
+            <div>
+                <div class="hero-badge">
+                    <span class="hero-dot-pulse"></span>
+                    <span>Ölçeklenebilir backend servisler ve web uygulamaları geliştiriyorum</span>
+                </div>
+                <h1 class="hero-title">
+                    <span>Selam, ben</span>
+                    <span class="hero-gradient"> Hasancan Sözkan.</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Ruby on Rails, Laravel ve Node.js ile ölçeklenebilir backend servisler ve full‑stack web uygulamaları geliştiriyorum. 
+                    Temiz mimari, okunabilir kod ve güvenilir deployment süreçlerine odaklanıyorum.
+                </p>
+                <div class="hero-meta">
+                    <div class="hero-pill">Ağırlık alanım: Backend &amp; Full‑stack web geliştirme</div>
+                    <div class="hero-pill">Ruby on Rails · Laravel · React · DevOps</div>
+                </div>
+                <div class="hero-actions">
+                    <a href="#projects" class="btn-primary">
+                        <span>Projeleri incele</span>
+                        <span class="btn-icon-circle">↓</span>
+                    </a>
+                    <a href="#contact" class="btn-secondary">
+                        <span>Benimle iletişime geç</span>
+                    </a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-value">3+ yıl</div>
+                        <div class="stat-label">Web geliştirme deneyimi</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">10+</div>
+                        <div class="stat-label">Kişisel &amp; yan proje</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value">∞</div>
+                        <div class="stat-label">Öğrenme motivasyonu</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-visual-wrapper">
+                <div class="hero-card">
+                    <div class="hero-orbit"></div>
+                    <div class="hero-profile">
+                        <div class="hero-profile-main">
+                            <div class="hero-photo">
+                                <div class="hero-photo-inner">
+                                    <img src="126435123.jfif" alt="Hasancan Sözkan avatar" />
+                                </div>
+                            </div>
+                            <div class="hero-profile-text">
+                                <div class="hero-profile-name">Hasancan Sözkan</div>
+                                <div class="hero-profile-role">Backend &amp; Full-stack Developer</div>
+                                <div class="hero-profile-tags">
+                                    <span class="chip chip-primary">Backend Geliştirme</span>
+                                    <span class="chip">Full-stack Web</span>
+                                    <span class="chip">DevOps &amp; Cloud</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="hero-profile-meta">
+                            <div class="meta-card">
+                                <div class="meta-label">Odak Teknolojiler</div>
+                                <div class="meta-value">Ruby on Rails, Laravel, React, Next.js</div>
+                            </div>
+                            <div class="meta-card">
+                                <div class="meta-label">Şu an</div>
+                                <div class="meta-value">Yeni projeler ve fırsatlara açık</div>
+                            </div>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section">
+            <div class="section-header">
+                <div class="section-kicker">Hakkımda</div>
+                <h2 class="section-title">Güçlü temeller, ölçeklenebilir mimari odağı</h2>
+                <p class="section-description">
+                    Ruby on Rails, Laravel, Node.js ve modern JS framework’leri ile uçtan uca web uygulamaları geliştiriyorum. 
+                    Kod kalitesi, domain odaklı mimari ve performans her projede önceliğim. 
+                    Yeni teknolojileri deneyip gerçek projelerde uygulamayı seviyorum.
+                </p>
+            </div>
+            <div class="section-card-row">
+                <article class="card card-soft">
+                    <h3 class="card-title">Yaklaşımım</h3>
+                    <p class="card-text">
+                        Domain odaklı tasarım, katmanlı mimari ve test edilebilir kod yapıları ile çalışıyorum. 
+                        API tasarımı, veri modeli ve altyapıyı düşünerek bakımı kolay, güvenilir ve gözlemlenebilir servisler üretmeye odaklanıyorum.
+                    </p>
+                    <div class="about-list">
+                        <div>
+                            <div class="about-item-label">Çalışma Şeklim</div>
+                            <div class="about-item-value">Remote / Hibrit</div>
+                        </div>
+                        <div>
+                            <div class="about-item-label">Konum</div>
+                            <div class="about-item-value">Türkiye</div>
+                        </div>
+                        <div>
+                            <div class="about-item-label">İlgi Alanları</div>
+                            <div class="about-item-value">Backend geliştirme, full‑stack web, DevOps &amp; cloud</div>
+                        </div>
+                        <div>
+                            <div class="about-item-label">Hedef</div>
+                            <div class="about-item-value">Gerçek dünyada kullanılan, ölçeklenebilir backend sistemler ve ürün odaklı full‑stack uygulamalar geliştirmek</div>
+                        </div>
+                    </div>
+                </article>
+                <article class="card">
+                    <h3 class="card-title">Öne çıkan noktalar</h3>
+                    <ul style="list-style:none; display:flex; flex-direction:column; gap:0.45rem; font-size:0.86rem; color:var(--text-muted);">
+                        <li>• RESTful API’lar ve mikroservis mimarileri tasarlayabilirim.</li>
+                        <li>• CI/CD, Docker ve bulut altyapısı ile prod ortamına güvenle deploy ederim.</li>
+                        <li>• Kod kalitesi, testler ve gözlemlenebilirlik (logging, metrics) benim için kritiktir.</li>
+                        <li>• Takımla açık iletişim kurar, teknik kararları net şekilde dokümante ederim.</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <section id="skills" class="section">
+            <div class="section-header">
+                <div class="section-kicker">Yetenekler</div>
+                <h2 class="section-title">Güncel ve üretimde kullanılabilir teknolojiler</h2>
+                <p class="section-description">
+                    Aşağıdaki başlıklar, sık kullandığım ve üretim ortamında tecrübem olan teknolojileri özetliyor.
+                    Yeni araçları öğrenmeye ve projeye en uygun teknolojiyi seçmeye önem veriyorum.
+                </p>
+            </div>
+            <div class="section-card-row">
+                <article class="card">
+                    <h3 class="card-title">Teknik Yetenekler</h3>
+                    <div class="tech-badges-group">
+                        <div class="skill-category-label">Backend Geliştirme</div>
+                        <div class="tech-badges">
+                            <span class="tech-badge badge-red">Ruby</span>
+                            <span class="tech-badge badge-red">Rails</span>
+                            <span class="tech-badge badge-red">Laravel</span>
+                            <span class="tech-badge badge-blue">PHP</span>
+                            <span class="tech-badge badge-green">Node.js</span>
+                            <span class="tech-badge badge-green">Express</span>
+                        </div>
+                    </div>
+                    <div class="tech-badges-group">
+                        <div class="skill-category-label">Full-stack Web</div>
+                        <div class="tech-badges">
+                            <span class="tech-badge badge-amber">JavaScript</span>
+                            <span class="tech-badge badge-blue">TypeScript</span>
+                            <span class="tech-badge badge-blue">React</span>
+                            <span class="tech-badge badge-slate">Next.js</span>
+                            <span class="tech-badge badge-green">Vue.js 3</span>
+                        </div>
+                    </div>
+                    <div class="tech-badges-group">
+                        <div class="skill-category-label">Veri Tabanı &amp; Cache</div>
+                        <div class="tech-badges">
+                            <span class="tech-badge badge-green">MongoDB</span>
+                            <span class="tech-badge badge-green">MySQL</span>
+                            <span class="tech-badge badge-blue">PostgreSQL</span>
+                            <span class="tech-badge badge-red">Redis</span>
+                        </div>
+                    </div>
+                    <div class="tech-badges-group">
+                        <div class="skill-category-label">DevOps &amp; Cloud</div>
+                        <div class="tech-badges">
+                            <span class="tech-badge badge-blue">Docker</span>
+                            <span class="tech-badge badge-blue">Kubernetes</span>
+                            <span class="tech-badge badge-amber">AWS</span>
+                        </div>
+                    </div>
+                </article>
+                <article class="card">
+                    <h3 class="card-title">Çalışma Biçimi</h3>
+                    <p class="card-text">
+                        Projelerde tutarlı servis sınırları, temiz klasör yapıları ve okunabilir backend kod standartları oluşturmaya odaklanıyorum.
+                        Kod incelemeleri, otomatik testler, logging ve dokümantasyon süreçlerine değer veriyorum.
+                    </p>
+                    <ul style="list-style:none; display:flex; flex-direction:column; gap:0.45rem; font-size:0.86rem; color:var(--text-muted); margin-top:0.9rem;">
+                        <li>• Mikroservisler ve modüler monolith yapılarla çalışabilirim.</li>
+                        <li>• Performans, güvenlik ve hata yönetimine özellikle dikkat ederim.</li>
+                        <li>• Git akışları (feature branch, pull request) ve code review süreçleri ile rahat çalışırım.</li>
+                        <li>• CI/CD, container ve cloud ortamlarında dev/prod yaşam döngüsünü yakından takip ederim.</li>
+                    </ul>
+                </article>
+            </div>
+        </section>
+
+        <section id="projects" class="section">
+            <div class="section-header">
+                <div class="section-kicker">Projeler</div>
+                <h2 class="section-title">Seçtiğim birkaç çalışma</h2>
+                <p class="section-description">
+                    Backend araçları, güvenlik odaklı yardımcı uygulamalar ve full‑stack web projeleri içeren seçili çalışmalar.
+                    Kartlardaki linkler üzerinden ilgili GitHub depolarına veya canlı demolara ulaşabilirsin.
+                </p>
+            </div>
+            <div class="projects-grid">
+                <article class="project-card" data-images="images/kasa-1.png, images/kasa-2.png">
+                    <div class="project-badge-row">
+                        <span class="project-tag">FinTech · Dashboard</span>
+                        <span style="font-size:0.72rem; color:var(--text-muted);">Laravel 11 · Tailwind</span>
+                    </div>
+                    <h3 class="project-name">Kasa Simülasyon Sistemi</h3>
+                    <p class="project-desc">
+                        Kar/Zarar takibi, raporlar ve grafiklerle desteklenmiş, Laravel tabanlı profesyonel kasa ve finans simülasyon uygulaması.
+                    </p>
+                    <div class="project-footer">
+                        <a href="https://github.com/kuasarkod/kasa-simulasyon" class="project-link" target="_blank" rel="noreferrer">
+                            <span>Repo'yu Aç</span>
+                            <span class="project-link-arrow">↗</span>
+                        </a>
+                        <span class="project-tech">Laravel · Tailwind CSS · Chart.js</span>
+                    </div>
+                </article>
+                <article class="project-card">
+                    <div class="project-badge-row">
+                        <span class="project-tag">Security · Networking</span>
+                        <span style="font-size:0.72rem; color:var(--text-muted);">Python · Port Scanner</span>
+                    </div>
+                    <h3 class="project-name">Advanced Port Scanner</h3>
+                    <p class="project-desc">
+                        Birden fazla tarama türünü destekleyen, çoklu hedef yönetebilen ve güvenlik analizi için ayrıntılı sonuçlar sunan gelişmiş port tarama aracı.
+                    </p>
+                    <div class="project-footer">
+                        <a href="https://github.com/kuasarkod/advanced-port-scanner" class="project-link" target="_blank" rel="noreferrer">
+                            <span>GitHub'da Gör</span>
+                            <span class="project-link-arrow">↗</span>
+                        </a>
+                        <span class="project-tech">Python · Async IO</span>
+                    </div>
+                </article>
+                <article class="project-card">
+                    <div class="project-badge-row">
+                        <span class="project-tag">Monitoring · ML</span>
+                        <span style="font-size:0.72rem; color:var(--text-muted);">FastAPI · React</span>
+                    </div>
+                    <h3 class="project-name">Network Anomaly Detector</h3>
+                    <p class="project-desc">
+                        Ağ trafiğini izleyip anomali tespiti yapan, metrikleri toplayan ve web dashboard üzerinden görselleştiren uçtan uca izleme pipeline’ı.
+                    </p>
+                    <div class="project-footer">
+                        <a href="https://github.com/kuasarkod/network-anomaly-detector" class="project-link" target="_blank" rel="noreferrer">
+                            <span>Projeye Git</span>
+                            <span class="project-link-arrow">↗</span>
+                        </a>
+                        <span class="project-tech">Python · FastAPI · React</span>
+                    </div>
+                </article>
+                <article class="project-card">
+                    <div class="project-badge-row">
+                        <span class="project-tag">CLI · Crypto</span>
+                        <span style="font-size:0.72rem; color:var(--text-muted);">Node.js · JavaScript</span>
+                    </div>
+                    <h3 class="project-name">Coin Spy</h3>
+                    <p class="project-desc">
+                        Gerçek zamanlı fiyat takibi, alarm ve etkileşimli menülerle çalışan, CoinGecko API üzerine kurulu profesyonel kripto para takip aracı.
+                    </p>
+                    <div class="project-footer">
+                        <a href="https://github.com/kuasarkod/coin-spy" class="project-link" target="_blank" rel="noreferrer">
+                            <span>Projeye Git</span>
+                            <span class="project-link-arrow">↗</span>
+                        </a>
+                        <span class="project-tech">Node.js · JavaScript</span>
+                    </div>
+                </article>
+                <article class="project-card" data-images="img/ruby-restaurant1.png, img/ruby-restaurant2.png, img/ruby-restaurant3.png, img/ruby-restaurant4.png">
+                    <div class="project-badge-row">
+                        <span class="project-tag">Rails · Web</span>
+                        <span style="font-size:0.72rem; color:var(--text-muted);">Ruby on Rails</span>
+                    </div>
+                    <h3 class="project-name">Ruby Restaurant</h3>
+                    <p class="project-desc">
+                        Restoran için yönetim paneli ve ziyaretçi arayüzü sunan, menü ve rezervasyon odağında geliştirilmiş tam özellikli web uygulaması.
+                    </p>
+                    <div class="project-footer">
+                        <a href="https://github.com/kuasarkod/ruby-restaurant" class="project-link" target="_blank" rel="noreferrer">
+                            <span>Repo'yu Aç</span>
+                            <span class="project-link-arrow">↗</span>
+                        </a>
+                        <span class="project-tech">Ruby on Rails · HTML · CSS</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <div id="projectModalBackdrop" class="project-modal-backdrop" aria-hidden="true">
+            <div class="project-modal" role="dialog" aria-modal="true" aria-labelledby="projectModalTitle">
+                <button class="project-modal-close" type="button" aria-label="Kapat">✕</button>
+                <div class="project-modal-header">
+                    <div class="section-kicker" style="font-size:0.72rem;">Proje Önizlemesi</div>
+                    <h3 id="projectModalTitle" class="project-modal-title"></h3>
+                    <p id="projectModalSubtitle" class="project-modal-subtitle"></p>
+                </div>
+                <div class="project-modal-carousel">
+                    <button class="project-modal-arrow" type="button" data-direction="prev">‹</button>
+                    <div class="project-modal-viewport">
+                        <img id="projectModalImage" class="project-modal-image" src="" alt="Proje ekran görüntüsü" />
+                        <div id="projectModalEmpty" class="project-modal-empty">Bu proje için henüz görsel eklenmedi. Karttaki <code>data-images</code> alanına görsel yollarını ekleyebilirsin.</div>
+                    </div>
+                    <button class="project-modal-arrow" type="button" data-direction="next">›</button>
+                </div>
+                <div class="project-modal-footer">
+                    <span style="color:var(--text-muted);">Görseller arasında ok tuşlarıyla gezinebilirsin.</span>
+                    <a id="projectModalRepoLink" href="#" class="project-modal-link" target="_blank" rel="noreferrer">
+                        <span>GitHub'da Aç</span>
+                        <span style="font-size:0.78rem;">↗</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <section id="contact" class="section">
+            <div class="section-header">
+                <div class="section-kicker">İletişim</div>
+                <h2 class="section-title">Birlikte üretmek istersen</h2>
+                <p class="section-description">
+                    Yeni projeler, freelance işler veya birlikte bir şeyler denemek istersen benimle iletişime geçebilirsin.
+                    Aşağıdaki kanallardan bana ulaşman yeterli.
+                </p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-highlight">
+                    <div class="contact-highlight-title">Tercih ettiğim iletişim kanalları</div>
+                    <p class="contact-highlight-text">
+                        En hızlı dönüşü genellikle Discord, Telegram veya WhatsApp üzerinden veriyorum.
+                        İstersen GitHub profilimden de projeler hakkında yazabilirsin.
+                    </p>
+                    <div class="contact-links">
+                        <a href="https://discord.com" class="contact-link-item" target="_blank" rel="noreferrer">
+                            <span class="contact-link-label">
+                                <span class="contact-link-icon-circle">DC</span>
+                                <span>Discord</span>
+                            </span>
+                            <span style="font-size:0.78rem;">kuasarkod</span>
+                        </a>
+                        <a href="https://t.me/kuasarkod" class="contact-link-item" target="_blank" rel="noreferrer">
+                            <span class="contact-link-label">
+                                <span class="contact-link-icon-circle">TG</span>
+                                <span>Telegram</span>
+                            </span>
+                            <span style="font-size:0.78rem;">@kuasarkod</span>
+                        </a>
+                        <a href="https://wa.me/905318565797" class="contact-link-item" target="_blank" rel="noreferrer">
+                            <span class="contact-link-label">
+                                <span class="contact-link-icon-circle">WA</span>
+                                <span>WhatsApp</span>
+                            </span>
+                            <span style="font-size:0.78rem;">+90 531 856 57 97</span>
+                        </a>
+                        <a href="https://github.com/kuasarkod" class="contact-link-item" target="_blank" rel="noreferrer">
+                            <span class="contact-link-label">
+                                <span class="contact-link-icon-circle">GH</span>
+                                <span>GitHub</span>
+                            </span>
+                            <span style="font-size:0.78rem;">@kuasarkod</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <div>© <span id="year"></span> Hasancan Sözkan. Tüm hakları saklıdır.</div>
+            <div class="footer-links">
+                <a href="#home" class="footer-link">Başa dön</a>
+                <a href="https://github.com/kuasarkod/kuasarkod.github.io" class="footer-link" target="_blank" rel="noreferrer">Kaynak kod</a>
+            </div>
+        </div>
+    </footer>
+</div>
+
+<script>
+    const yearSpan = document.getElementById("year");
+    if (yearSpan) {
+        yearSpan.textContent = new Date().getFullYear().toString();
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+        link.addEventListener("click", function (e) {
+            const targetId = this.getAttribute("href");
+            if (!targetId || targetId === "#") return;
+            const target = document.querySelector(targetId);
+            if (!target) return;
+            e.preventDefault();
+            const rect = target.getBoundingClientRect();
+            const offset = window.pageYOffset + rect.top - 80;
+            window.scrollTo({ top: offset, behavior: "smooth" });
+        });
+    });
+
+    // Proje modal & carousel
+    (function () {
+        const backdrop = document.getElementById("projectModalBackdrop");
+        if (!backdrop) return;
+        const modalImage = document.getElementById("projectModalImage");
+        const modalEmpty = document.getElementById("projectModalEmpty");
+        const modalTitle = document.getElementById("projectModalTitle");
+        const modalSubtitle = document.getElementById("projectModalSubtitle");
+        const repoLink = document.getElementById("projectModalRepoLink");
+        const closeBtn = backdrop.querySelector(".project-modal-close");
+        const arrows = backdrop.querySelectorAll(".project-modal-arrow");
+        const cards = document.querySelectorAll(".project-card");
+
+        let currentImages = [];
+        let currentIndex = 0;
+
+        function updateImage() {
+            if (!modalImage || !modalEmpty) return;
+            if (!currentImages.length) {
+                modalImage.style.display = "none";
+                modalEmpty.style.display = "flex";
+                return;
+            }
+            if (currentIndex < 0) currentIndex = currentImages.length - 1;
+            if (currentIndex >= currentImages.length) currentIndex = 0;
+            modalImage.src = currentImages[currentIndex];
+            modalImage.style.display = "block";
+            modalEmpty.style.display = "none";
+        }
+
+        function openModal(card) {
+            if (!backdrop) return;
+            const titleEl = card.querySelector(".project-name");
+            const descEl = card.querySelector(".project-desc");
+            const linkEl = card.querySelector(".project-link");
+            const imagesAttr = card.getAttribute("data-images") || "";
+            currentImages = imagesAttr.split(",").map(function (s) { return s.trim(); }).filter(Boolean);
+            currentIndex = 0;
+            if (modalTitle && titleEl) modalTitle.textContent = titleEl.textContent || "";
+            if (modalSubtitle && descEl) modalSubtitle.textContent = descEl.textContent || "";
+            if (repoLink && linkEl) repoLink.href = linkEl.getAttribute("href") || "#";
+            updateImage();
+            backdrop.classList.add("is-open");
+            document.body.style.overflow = "hidden";
+        }
+
+        function closeModal() {
+            if (!backdrop) return;
+            backdrop.classList.remove("is-open");
+            document.body.style.overflow = "";
+        }
+
+        cards.forEach(function (card) {
+            card.addEventListener("click", function (e) {
+                if (e.target.closest("a")) return;
+                openModal(card);
+            });
+        });
+
+        if (closeBtn) {
+            closeBtn.addEventListener("click", closeModal);
+        }
+
+        backdrop.addEventListener("click", function (e) {
+            if (e.target === backdrop) closeModal();
+        });
+
+        arrows.forEach(function (btn) {
+            btn.addEventListener("click", function () {
+                if (!currentImages.length) return;
+                var dir = btn.getAttribute("data-direction") === "prev" ? -1 : 1;
+                currentIndex += dir;
+                updateImage();
+            });
+        });
+
+        document.addEventListener("keydown", function (e) {
+            if (!backdrop.classList.contains("is-open")) return;
+            if (e.key === "Escape") {
+                closeModal();
+            } else if (e.key === "ArrowRight") {
+                currentIndex += 1;
+                updateImage();
+            } else if (e.key === "ArrowLeft") {
+                currentIndex -= 1;
+                updateImage();
+            }
+        });
+    })();
+</script>
+</body>
+</html>
